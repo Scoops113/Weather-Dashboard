@@ -5,12 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Dashboard</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS */
+    .header-text-black {
+      color: black;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Top section with dark grey-blue background and white text -->
+  <div class="jumbotron jumbotron-fluid bg-primary text-white mb-0">
+    <div class="container">
+      <h1 class="display-4">Weather Dashboard</h1>
+    </div>
+  </div>
+
+  <!-- Container for the rest of the content -->
   <div class="container mt-5">
-    <h1 class="mb-4">Weather Dashboard</h1>
-    
-    
+
+    <!-- Search form -->
     <form id="search-form" class="mb-4">
       <div class="form-group">
         <label for="city-input">Enter City Name:</label>
@@ -19,27 +33,34 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
     
-    
+    <!-- Current Weather -->
     <div id="current-weather" class="mb-4">
-      <h2>Current Weather</h2>
-      
+      <h2 class="header-text-black">Current Weather</h2>
+      <!-- This will be dynamically updated using JavaScript -->
     </div>
     
-    
+    <!-- 5-Day Forecast -->
     <div id="forecast" class="mb-4">
-      <h2>5-Day Forecast</h2>
-      
+      <h2 class="header-text-black mt-4">5-Day Forecast</h2>
+      <div class="row" id="forecast-cards">
+        <!-- Forecast cards will be dynamically generated here -->
+      </div>
     </div>
     
-    
+    <!-- Search History -->
     <div id="search-history">
-      <h2>Search History</h2>
-      
+      <h2 class="header-text-black">Search History</h2>
+      <!-- Search history will be dynamically updated using JavaScript -->
     </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="script.js"></script> 
+  <script src="./script.js"></script> 
 </body>
 </html>
+
+
+
+
+
