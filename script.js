@@ -99,11 +99,15 @@ function fetchForecastByCoordinates(latitude, longitude) {
 // Function to update the current weather display
 function updateCurrentWeather(data) {
     const currentWeather = document.getElementById('current-weather');
+    const iconCode = data.weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}.png`;
+
     currentWeather.innerHTML = `
         <h2 class="text-black">Current Weather</h2>
         <div class="card bg-primary text-white">
             <div class="card-body">
                 <h5 class="card-title">${data.name}</h5>
+                <img src="${iconUrl}" alt="Weather Icon">
                 <p class="card-text">Temperature: ${data.main.temp} °C</p>
                 <p class="card-text">Humidity: ${data.main.humidity}%</p>
                 <p class="card-text">Wind Speed: ${data.wind.speed} m/s</p>
@@ -112,13 +116,14 @@ function updateCurrentWeather(data) {
     `;
 }
 
+
 // Function to update the 5-day forecast display
 function updateForecast(data) {
     const forecast = document.getElementById('forecast');
     forecast.innerHTML = `
         <h2 class="text-black mt-4">5-Day Forecast</h2>
         <div class="row">
-            ${data.list.slice(1, 6).map(item => {
+            ${data.list.slice(1).filter((item, index) => index % 8 === 0).slice(0, 5).map(item => {
                 const date = new Date(item.dt * 1000);
                 const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
                 const iconCode = item.weather[0].icon;
@@ -140,6 +145,7 @@ function updateForecast(data) {
         </div>
     `;
 }
+
 
 // Function to update the search history
 function updateSearchHistory(city) {
@@ -178,6 +184,8 @@ $('#search-form').submit(function (event) {
         getCoordinates(city);
     }
 });
+
+
 
 
 
