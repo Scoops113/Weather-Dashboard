@@ -96,7 +96,7 @@ function fetchForecastByCoordinates(latitude, longitude) {
         });
 }
 
-// Function to update the current weather display
+
 function updateCurrentWeather(data) {
     const currentWeather = document.getElementById('current-weather');
     const iconCode = data.weather[0].icon;
@@ -117,7 +117,7 @@ function updateCurrentWeather(data) {
 }
 
 
-// Function to update the 5-day forecast display
+
 function updateForecast(data) {
     const forecast = document.getElementById('forecast');
     forecast.innerHTML = `
@@ -147,7 +147,7 @@ function updateForecast(data) {
 }
 
 
-// Function to update the search history
+
 function updateSearchHistory(city) {
     let searchHistory = localStorage.getItem('searchHistory');
     if (!searchHistory) {
@@ -156,17 +156,17 @@ function updateSearchHistory(city) {
         searchHistory = JSON.parse(searchHistory);
     }
 
-    // Add the searched city to the search history
+    
     searchHistory.push(city);
-    // Limit search history to 5 entries
+    
     if (searchHistory.length > 5) {
         searchHistory.shift();
     }
 
-    // Save the updated search history to localStorage
+    
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
-    // Display the updated search history
+    
     const searchHistoryElement = document.getElementById('search-history');
     searchHistoryElement.innerHTML = `
         <h2 class="black mt-4">Search History</h2>
@@ -176,7 +176,7 @@ function updateSearchHistory(city) {
     `;
 }
 
-// Event listener for form submission
+
 $('#search-form').submit(function (event) {
     event.preventDefault();
     const city = $('#city-input').val().trim();
